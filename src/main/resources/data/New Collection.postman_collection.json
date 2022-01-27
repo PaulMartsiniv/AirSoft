@@ -1,0 +1,649 @@
+{
+	"info": {
+		"_postman_id": "dfde4693-92d4-456d-ad2b-19c2f6265359",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/company - add",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"asd\",\r\n    \"companyType\": \"INTERNATIONAL_AIRLINES\",\r\n    \"foundedAt\": \"1900-11-28\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8080/company",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"company"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/company - findAll",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/company",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"company"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/company - getById",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/company/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"company",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/company - updateCompany",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"asdqwe\",\r\n    \"companyType\": \"INTERNATIONAL_AIRLINES\",\r\n    \"foundedAt\": \"1901-11-28\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/company/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"company",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/company - delete",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/company/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"company",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/airplane - add",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\": \"Boeing 737-8002\",\r\n        \"factorySerialNumber\": \"2\",\r\n        \"airCompany\": {\r\n            \"id\": 1,\r\n            \"name\": \"Ryanair\",\r\n            \"companyType\": \"INTERNATIONAL_AIRLINES\",\r\n            \"foundedAt\": \"1984-11-28\"\r\n        },\r\n        \"numberOfFlights\": 0,\r\n        \"flight_distance\": 1000,\r\n        \"fuelCapacity\": 500,\r\n        \"type\": \"AIRLINER\",\r\n        \"createdAt\": \"2022-01-26\"\r\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/airplane",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"airplane"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/airplane - findAll",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/airplane",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"airplane"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/airplane - getById",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/airplane/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"airplane",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/airplane - update ?",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/airplane/update?airplaneId=1&companyId=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"airplane",
+						"update"
+					],
+					"query": [
+						{
+							"key": "airplaneId",
+							"value": "1"
+						},
+						{
+							"key": "companyId",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/airplane - deleteById",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/airplane/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"airplane",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/airplane - findAll Copy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/airplane",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"airplane"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/flight - add",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"flightStatus\": \"PENDING\",\r\n    \"airCompany\": {\r\n        \"id\": 1,\r\n        \"name\": \"Ryanair\",\r\n        \"companyType\": \"INTERNATIONAL_AIRLINES\",\r\n        \"foundedAt\": \"1984-11-28\"\r\n    },\r\n    \"airplane\": [\r\n        {\r\n            \"id\": 1,\r\n            \"name\": \"Boeing 737-800\",\r\n            \"factorySerialNumber\": \"AN1324546\",\r\n            \"airCompany\": {\r\n                \"id\": 2,\r\n                \"name\": \"asd\",\r\n                \"companyType\": \"INTERNATIONAL_AIRLINES\",\r\n                \"foundedAt\": \"1900-11-28\"\r\n            },\r\n            \"numberOfFlights\": 0,\r\n            \"flight_distance\": 1000,\r\n            \"fuelCapacity\": 500,\r\n            \"type\": \"AIRLINER\",\r\n            \"createdAt\": \"2022-01-26\"\r\n        }\r\n    ],\r\n    \"departure_country\": \"Ukraine\",\r\n    \"destinationCountry\": \"USA\",\r\n    \"distance\": 9153,\r\n    \"estimatedFlightTime\": null,\r\n    \"startedAt\": \"2022-01-26T07:00:00\",\r\n    \"endedAt\": \"2022-01-26T18:18:00\",\r\n    \"delayStartedAt\": null,\r\n    \"createdAt\": \"2012-01-26\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/flight",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"flight"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/flight - findAll",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"flightStatus\": \"PENDING\",\r\n    \"airCompany\": {\r\n        \"id\": 1,\r\n        \"name\": \"Ryanair\",\r\n        \"companyType\": \"INTERNATIONAL_AIRLINES\",\r\n        \"foundedAt\": \"1984-11-28\"\r\n    },\r\n    \"airplane\": [\r\n        {\r\n            \"id\": 1,\r\n            \"name\": \"Boeing 737-800\",\r\n            \"factorySerialNumber\": \"AN1324546\",\r\n            \"airCompany\": {\r\n                \"id\": 2,\r\n                \"name\": \"asd\",\r\n                \"companyType\": \"INTERNATIONAL_AIRLINES\",\r\n                \"foundedAt\": \"1900-11-28\"\r\n            },\r\n            \"numberOfFlights\": 0,\r\n            \"flight_distance\": 1000,\r\n            \"fuelCapacity\": 500,\r\n            \"type\": \"AIRLINER\",\r\n            \"createdAt\": \"2022-01-26\"\r\n        }\r\n    ],\r\n    \"departure_country\": \"Ukraine\",\r\n    \"destinationCountry\": \"USA\",\r\n    \"distance\": 9153,\r\n    \"estimatedFlightTime\": null,\r\n    \"startedAt\": \"2022-01-26T07:00:00\",\r\n    \"endedAt\": \"2022-01-26T18:18:00\",\r\n    \"delayStartedAt\": null,\r\n    \"createdAt\": \"2012-01-26\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/flight",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"flight"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/flight - getById",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/flight/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"flight",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/flight - updateFlightStatus",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"flightStatus\": \"PENDING\",\r\n    \"airCompany\": {\r\n        \"id\": 1,\r\n        \"name\": \"Ryanair\",\r\n        \"companyType\": \"INTERNATIONAL_AIRLINES\",\r\n        \"foundedAt\": \"1984-11-28\"\r\n    },\r\n    \"airplane\": [\r\n        {\r\n            \"id\": 1,\r\n            \"name\": \"Boeing 737-800\",\r\n            \"factorySerialNumber\": \"AN1324546\",\r\n            \"airCompany\": {\r\n                \"id\": 2,\r\n                \"name\": \"asd\",\r\n                \"companyType\": \"INTERNATIONAL_AIRLINES\",\r\n                \"foundedAt\": \"1900-11-28\"\r\n            },\r\n            \"numberOfFlights\": 0,\r\n            \"flight_distance\": 1000,\r\n            \"fuelCapacity\": 500,\r\n            \"type\": \"AIRLINER\",\r\n            \"createdAt\": \"2022-01-26\"\r\n        }\r\n    ],\r\n    \"departure_country\": \"Ukraine\",\r\n    \"destinationCountry\": \"USA\",\r\n    \"distance\": 9153,\r\n    \"estimatedFlightTime\": null,\r\n    \"startedAt\": \"2022-01-26T07:00:00\",\r\n    \"endedAt\": \"2022-01-26T18:18:00\",\r\n    \"delayStartedAt\": null,\r\n    \"createdAt\": \"2012-01-26\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/flight?id=2&status=c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"flight"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						},
+						{
+							"key": "status",
+							"value": "c"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/flight - deleteById",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/flight/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"flight",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/flight - findAllByFlightStatus_ActiveAndStartedAtBefore24Hours",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/flight/active24",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"flight",
+						"active24"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/flight - findAllByFlightStatusEqualsAndEstimatedFlightTimeLessThan",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/flight/flightId?id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"flight",
+						"flightId"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/flight - findAllByAirCompany_NameAndFlightStatus",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/flight/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"flight",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
