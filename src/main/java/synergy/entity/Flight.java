@@ -65,5 +65,7 @@ public class Flight {
     @Column(name = "created_at")
     private LocalDate createdAt;
 
-    public enum FlightStatus { ACTIVE, COMPLETED, DELAYED, PENDING }
+    public enum FlightStatus {
+        ACTIVE, COMPLETED, DELAYED, PENDING
+    }
 }
