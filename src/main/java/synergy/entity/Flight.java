@@ -45,8 +45,8 @@ public class Flight {
     private AirCompany airCompany;
     @ManyToMany
     @JoinTable(name = "airplane_flight",
-            joinColumns = @JoinColumn(name = "airplane_id"),
-            inverseJoinColumns = @JoinColumn(name = "flight_id"))
+            joinColumns = @JoinColumn(name = "flight_id"),
+            inverseJoinColumns = @JoinColumn(name = "airplane_id"))
     @ToString.Exclude
     private List<Airplane> airplane;
     @Column(name = "departure_country")

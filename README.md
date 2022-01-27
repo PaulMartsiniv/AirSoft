@@ -1,10 +1,10 @@
-     postman url: `https://www.getpostman.com/collections/ca882c02740b6e4763c2`
-     
-     Also, you have postman collection in: `src/main/resources/data/New Collection.postman_collection.json`
-    
-     Docker Pull Command `docker pull pavlomartsiniv/air_soft` 
-     
-     url `https://hub.docker.com/r/pavlomartsiniv/air_soft`
+ postman url: `https://www.getpostman.com/collections/ca882c02740b6e4763c2`
+
+ Also, you have postman collection in: `src/main/resources/data/New Collection.postman_collection.json`
+
+ Docker Pull Command `docker pull pavlomartsiniv/air_soft` 
+
+ url `https://hub.docker.com/r/pavlomartsiniv/air_soft`
 
 ## Implementation details and technologies
 
@@ -21,7 +21,7 @@
 >- Maven
 
 ### Diagram DB
-![drawing](src/main/resources/img_1.png)
+![drawing](src/main/resources/img.png)
 
 ## Setup
 >1. run mvn clean package

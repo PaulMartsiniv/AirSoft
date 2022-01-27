@@ -20,7 +20,7 @@ public class AirplaneResponseDto {
     private Long id;
     private String name;
     private String factorySerialNumber;
-    private AirCompany airCompany;
+    private AirCompanyResponseDto airCompany;
     private int numberOfFlights;
     private int flight_distance;
     private int fuelCapacity;

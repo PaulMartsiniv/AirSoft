@@ -5,6 +5,7 @@ import java.util.Map;
 import lombok.AllArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import synergy.dao.AirCompanyDao;
 import synergy.dao.AirplaneDao;
 import synergy.dao.spec.SpecificationManager;
 import synergy.entity.AirCompany;
@@ -17,7 +18,7 @@ import synergy.service.AirplaneService;
 public class AirplaneServiceImpl implements AirplaneService {
     SpecificationManager<Airplane> manager;
     AirCompanyService airCompanyService;
-    FlightServiceImpl flightService;
+    AirCompanyDao airCompanyDao;
     AirplaneDao airplaneDao;
 
     @Override
@@ -48,7 +49,7 @@ public class AirplaneServiceImpl implements AirplaneService {
     @Override
     public Airplane updateCompany(Long id, Long airCompanyId) {
         Airplane airplane = getById(id);
-        AirCompany airCompany = airCompanyService.getById(airCompanyId);
+        AirCompany airCompany = airCompanyDao.getById(airCompanyId);
         airplane.setAirCompany(airCompany);
         return save(airplane);
     }

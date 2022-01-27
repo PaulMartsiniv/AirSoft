@@ -9,5 +9,4 @@ import synergy.entity.Airplane;
 public interface AirplaneDao extends JpaRepository<Airplane, Long>,
         JpaSpecificationExecutor<Airplane> {
 
-    void getByIdAndAirCompany_Id(Long id, Long airCompany_id);
 }

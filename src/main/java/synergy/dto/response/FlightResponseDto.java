@@ -23,8 +23,8 @@ import synergy.entity.Flight;
 public class FlightResponseDto {
     private Long id;
     private Flight.FlightStatus flightStatus;
-    private AirCompany airCompany;
-    private List<Airplane> airplane;
+    private AirCompanyResponseDto airCompany;
+    private List<AirplaneResponseDto> airplane;
     private String departure_country;
     private String destinationCountry;
     private int distance;
