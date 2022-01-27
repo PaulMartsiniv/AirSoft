@@ -1,6 +1,5 @@
 package synergy.dao;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
@@ -16,7 +15,6 @@ import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import synergy.entity.AirCompany;
-import synergy.entity.Airplane;
 import synergy.entity.Flight;
 
 @DataJpaTest
@@ -47,40 +45,65 @@ class FlightDaoDaoTest {
     void before() {
         AirCompany company = airCompanyDao.save(AirCompany.builder()
                 .name("Ryanair")
-                .companyType(AirCompany.CompanyType.INTERNATIONAL_AIRLINES)
-                .foundedAt(LocalDate.of(1984, 11, 28))
-                .build());
-        Airplane airplane = airplaneDao.save(Airplane.builder()
-                .name("Boeing 737-800")
-                .factorySerialNumber("AN1324546")
-                .airCompany(company)
-                .flight_distance(1000)
-                .fuelCapacity(500)
-                .type(Airplane.TypeOfAirlines.AIRLINER)
-                .createdAt(LocalDate.of(2022, 1, 26))
                 .build());
         for (int i = 0; i < 3; i++) {
             flightDao.save(Flight.builder()
                     .flightStatus(Flight.FlightStatus.PENDING)
                     .airCompany(company)
-                    .airplane(List.of(airplane))
-                    .departure_country("Ukraine")
-                    .destinationCountry("USA")
+                    .departureCountry("Ukraine")
                     .distance(9153)
-                    .estimatedFlightTime(LocalTime.of(10, 10))
-                    .startedAt(LocalDateTime.of(2022, 1, 26, 7, 0))
-                    .endedAt(LocalDateTime.of(2022, 1, 26, 18, 18))
-                    .delayStartedAt(null)
-                    .createdAt(LocalDate.now().minusYears(10))
+                    .estimatedFlightTime(LocalTime.of(10, 0))
+                    .startedAt(LocalDateTime.now().minusHours(10))
+                    .endedAt(LocalDateTime.now().minusHours(0))
                     .build());
         }
     }
 
     @Test
-    void shouldReturnADSADAD() {
-        List<Flight> actual = flightDao.findAllByAirCompany_NameAndFlightStatus("Ryanair",
+    void shouldReturnAllByAirCompanyNameRyanairAndFlightStatusPending() {
+        List<Flight> actual = flightDao.findAllByAirCompanyNameAndFlightStatus("Ryanair",
                 Flight.FlightStatus.PENDING);
         Assertions.assertEquals(3, actual.size());
-        Assertions.assertEquals("Ukraine", actual.get(0).getDeparture_country());
+        Assertions.assertEquals("Ukraine", actual.get(0).getDepartureCountry());
+        Assertions.assertEquals("Ryanair", actual.get(0).getAirCompany().getName());
+        Assertions.assertEquals("Ryanair", actual.get(1).getAirCompany().getName());
+        Assertions.assertEquals("Ryanair", actual.get(2).getAirCompany().getName());
+        Assertions.assertEquals("PENDING", actual.get(0).getFlightStatus().name());
+        Assertions.assertEquals("PENDING", actual.get(1).getFlightStatus().name());
+        Assertions.assertEquals("PENDING", actual.get(2).getFlightStatus().name());
+    }
+
+    @Test
+    void findAllByFlightStatus_pending_andStartedAtBefore_9_hours() {
+        List<Flight> actual = flightDao.findAllByFlightStatusAndStartedAtBefore(Flight.FlightStatus.PENDING,
+                LocalDateTime.now().minusHours(9));
+        Assertions.assertEquals(3, actual.size());
+        Assertions.assertEquals("Ukraine", actual.get(0).getDepartureCountry());
+        Assertions.assertTrue(LocalDateTime.now().minusHours(9)
+                .isAfter(actual.get(0).getStartedAt()));
+        Assertions.assertEquals("PENDING", actual.get(0).getFlightStatus().name());
+        Assertions.assertEquals("PENDING", actual.get(1).getFlightStatus().name());
+        Assertions.assertEquals("PENDING", actual.get(2).getFlightStatus().name());
+    }
+
+    @Test
+    void findAllByFlightStatusEquals_pending_AndEstimatedFlightTimeLessThan_1hour_ok() {
+        List<Flight> actual = flightDao.findAllByFlightStatusEqualsAndEstimatedFlightTimeLessThan(
+                Flight.FlightStatus.PENDING, LocalTime.of(11,0));
+        Assertions.assertEquals(3, actual.size());
+        Assertions.assertTrue(LocalDateTime.now().minusHours(8)
+                .isAfter(actual.get(0).getStartedAt()));
+        Assertions.assertTrue(LocalDateTime.now().minusHours(12)
+                .isBefore(actual.get(0).getStartedAt()));
+        Assertions.assertEquals("PENDING", actual.get(0).getFlightStatus().name());
+        Assertions.assertEquals("PENDING", actual.get(1).getFlightStatus().name());
+        Assertions.assertEquals("PENDING", actual.get(2).getFlightStatus().name());
+    }
+
+    @Test
+    void findAllByFlightStatusEquals_pending_AndEstimatedFlightTimeLessThan_9hour_notOk() {
+        List<Flight> actual = flightDao.findAllByFlightStatusEqualsAndEstimatedFlightTimeLessThan(
+                Flight.FlightStatus.PENDING, LocalTime.of(9,59));
+        Assertions.assertEquals(List.of(), actual);
     }
 }

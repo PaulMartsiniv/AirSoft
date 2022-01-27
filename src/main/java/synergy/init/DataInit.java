@@ -16,7 +16,6 @@ import synergy.service.AirplaneService;
 import synergy.service.FlightService;
 import synergy.util.TimeUtils;
 
-
 @Component
 @AllArgsConstructor
 public class DataInit implements ApplicationRunner {
@@ -48,7 +47,7 @@ public class DataInit implements ApplicationRunner {
                 .name("Boeing 737-800")
                 .factorySerialNumber("AN1324546")
                 .airCompany(airCompany)
-                .flight_distance(1000)
+                .flightDistance(1000)
                 .fuelCapacity(500)
                 .type(Airplane.TypeOfAirlines.AIRLINER)
                 .createdAt(LocalDate.of(2022, 1, 26))
@@ -63,7 +62,7 @@ public class DataInit implements ApplicationRunner {
                 .flightStatus(Flight.FlightStatus.PENDING)
                 .airCompany(airCompany)
                 .airplane(List.of(airplane))
-                .departure_country("Ukraine")
+                .departureCountry("Ukraine")
                 .destinationCountry("USA")
                 .distance(9153)
                 .estimatedFlightTime(timeUtils

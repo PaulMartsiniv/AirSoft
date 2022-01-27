@@ -24,7 +24,7 @@ public class FlightRequestDto {
     private Flight.FlightStatus flightStatus;
     private AirCompany airCompany;
     private List<Airplane> airplane;
-    private String departure_country;
+    private String departureCountry;
     private String destinationCountry;
     private int distance;
     private LocalTime estimatedFlightTime;

@@ -40,7 +40,7 @@ public class Airplane {
     @Column(name = "number_of_flights")
     private int numberOfFlights;
     @Column(name = "flight_distance")
-    private int flight_distance;
+    private int flightDistance;
     @Column(name = "fuel_capacity")
     private int fuelCapacity;
     @Enumerated(EnumType.STRING)

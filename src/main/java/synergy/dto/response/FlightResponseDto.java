@@ -10,8 +10,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import synergy.entity.AirCompany;
-import synergy.entity.Airplane;
 import synergy.entity.Flight;
 
 @Getter
@@ -25,7 +23,7 @@ public class FlightResponseDto {
     private Flight.FlightStatus flightStatus;
     private AirCompanyResponseDto airCompany;
     private List<AirplaneResponseDto> airplane;
-    private String departure_country;
+    private String departureCountry;
     private String destinationCountry;
     private int distance;
     private LocalTime estimatedFlightTime;

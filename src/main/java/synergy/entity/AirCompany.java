@@ -36,5 +36,5 @@ public class AirCompany {
     @Column(name = "founded_at")
     private LocalDate foundedAt;
 
-    public enum CompanyType {INTERNATIONAL_AIRLINES, NATIONAL_AIRLINES, REGIONAL_AIRLINES}
+    public enum CompanyType { INTERNATIONAL_AIRLINES, NATIONAL_AIRLINES, REGIONAL_AIRLINES }
 }

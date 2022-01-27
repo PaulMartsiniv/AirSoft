@@ -13,8 +13,8 @@ import synergy.entity.Flight;
 @AllArgsConstructor
 public class FlightMapper implements RequestDtoMapper<FlightRequestDto, Flight>,
         ResponseDtoMapper<FlightResponseDto, Flight> {
-    AirCompanyMapper companyMapper;
-    AirplaneMapper airplaneMapper;
+    private final AirCompanyMapper companyMapper;
+    private final AirplaneMapper airplaneMapper;
 
     @Override
     public Flight mapToModel(FlightRequestDto dto) {
@@ -22,7 +22,7 @@ public class FlightMapper implements RequestDtoMapper<FlightRequestDto, Flight>,
                 .flightStatus(dto.getFlightStatus())
                 .airCompany(dto.getAirCompany())
                 .airplane(dto.getAirplane())
-                .departure_country(dto.getDeparture_country())
+                .departureCountry(dto.getDepartureCountry())
                 .destinationCountry(dto.getDestinationCountry())
                 .distance(dto.getDistance())
                 .startedAt(dto.getStartedAt())
@@ -41,7 +41,7 @@ public class FlightMapper implements RequestDtoMapper<FlightRequestDto, Flight>,
                 .airplane(flight.getAirplane().stream()
                         .map(airplaneMapper::toResponseDto)
                         .collect(Collectors.toList()))
-                .departure_country(flight.getDeparture_country())
+                .departureCountry(flight.getDepartureCountry())
                 .destinationCountry(flight.getDestinationCountry())
                 .distance(flight.getDistance())
                 .startedAt(flight.getStartedAt())

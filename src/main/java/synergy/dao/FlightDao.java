@@ -11,12 +11,12 @@ import synergy.entity.Flight;
 @Repository
 public interface FlightDao extends JpaRepository<Flight, Long>,
         JpaSpecificationExecutor<Flight> {
-    List<Flight> findAllByAirCompany_NameAndFlightStatus(String airCompany_name,
-                                                         Flight.FlightStatus flightStatus);
+    List<Flight> findAllByAirCompanyNameAndFlightStatus(String airCompanyName,
+                                                        Flight.FlightStatus flightStatus);
 
     List<Flight> findAllByFlightStatusAndStartedAtBefore(Flight.FlightStatus flightStatus,
                                                          LocalDateTime startedAt);
 
-    List<Flight> findAllByFlightStatusEqualsAndEstimatedFlightTimeLessThan
-            (Flight.FlightStatus flightStatus, LocalTime estimatedFlightTime);
+    List<Flight> findAllByFlightStatusEqualsAndEstimatedFlightTimeLessThan(
+            Flight.FlightStatus flightStatus, LocalTime estimatedFlightTime);
 }

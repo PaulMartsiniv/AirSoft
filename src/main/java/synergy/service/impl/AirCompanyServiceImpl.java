@@ -10,7 +10,7 @@ import synergy.service.AirCompanyService;
 @Service
 @AllArgsConstructor
 public class AirCompanyServiceImpl implements AirCompanyService {
-    AirCompanyDao dao;
+    private final AirCompanyDao dao;
 
     @Override
     public AirCompany save(AirCompany airCompany) {

@@ -5,7 +5,7 @@ import java.util.Map;
 import synergy.entity.Flight;
 
 public interface FlightService extends GenericService<Flight> {
-    List<Flight> findAllByAirCompany_NameAndFlightStatus(String airCompany_name,
+    List<Flight> findAllByAirCompany_nameAndFlightStatus(String airCompanyName,
                                                          String flightStatus);
 
     List<Flight> findAllByFlightStatusAndStartedAtBefore();

@@ -30,7 +30,7 @@ public class FlightController {
     private final FlightMapper flightMapper;
 
     @GetMapping
-        public List<FlightResponseDto> findAll(@RequestParam Map<String, String> params) {
+    public List<FlightResponseDto> findAll(@RequestParam Map<String, String> params) {
         logger.info("findAll method in class FlightController was called."
                 + " Params: params = {}", params);
         return flightService.findAll(params).stream()
@@ -53,13 +53,14 @@ public class FlightController {
     }
 
     @GetMapping("/findAllByAirCompany_NameAndFlightStatus")
-    public List<FlightResponseDto> findAllByAirCompany_NameAndFlightStatus(
-            @RequestParam("airCompany_name") String airCompany_name,
+    public List<FlightResponseDto> findAllByAirCompanyNameAndFlightStatus(
+            @RequestParam("airCompanyName") String airCompanyName,
             @RequestParam("flightStatus") String flightStatus) {
         logger.info("findAllByAirCompany_NameAndFlightStatus method in class "
-                        + "FlightController was called. Params: airCompany_name = {}, flightStatus = {}",
-                airCompany_name, flightStatus);
-        return flightService.findAllByAirCompany_NameAndFlightStatus(airCompany_name,
+                        + "FlightController was called. Params: airCompany_name = {},"
+                        + " flightStatus = {}",
+                airCompanyName, flightStatus);
+        return flightService.findAllByAirCompany_nameAndFlightStatus(airCompanyName,
                         flightStatus).stream()
                 .map(flightMapper::toResponseDto)
                 .collect(Collectors.toList());

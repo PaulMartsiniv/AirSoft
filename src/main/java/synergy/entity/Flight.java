@@ -50,7 +50,7 @@ public class Flight {
     @ToString.Exclude
     private List<Airplane> airplane;
     @Column(name = "departure_country")
-    private String departure_country;
+    private String departureCountry;
     @Column(name = "destination_country")
     private String destinationCountry;
     private int distance;
@@ -65,5 +65,5 @@ public class Flight {
     @Column(name = "created_at")
     private LocalDate createdAt;
 
-    public enum FlightStatus {ACTIVE, COMPLETED, DELAYED, PENDING}
+    public enum FlightStatus { ACTIVE, COMPLETED, DELAYED, PENDING }
 }

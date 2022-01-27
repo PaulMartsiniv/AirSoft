@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import synergy.entity.AirCompany;
 import synergy.entity.Airplane;
 
 @Getter
@@ -22,7 +21,7 @@ public class AirplaneResponseDto {
     private String factorySerialNumber;
     private AirCompanyResponseDto airCompany;
     private int numberOfFlights;
-    private int flight_distance;
+    private int flightDistance;
     private int fuelCapacity;
     private Airplane.TypeOfAirlines type;
     private LocalDate createdAt;

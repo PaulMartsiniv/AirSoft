@@ -12,7 +12,7 @@ import synergy.entity.Airplane;
 @AllArgsConstructor
 public class AirplaneMapper implements RequestDtoMapper<AirplaneRequestDto, Airplane>,
         ResponseDtoMapper<AirplaneResponseDto, Airplane> {
-    final AirCompanyMapper companyMapper;
+    private final AirCompanyMapper companyMapper;
 
     @Override
     public Airplane mapToModel(AirplaneRequestDto dto) {
@@ -21,7 +21,7 @@ public class AirplaneMapper implements RequestDtoMapper<AirplaneRequestDto, Airp
                 .factorySerialNumber(dto.getFactorySerialNumber())
                 .airCompany(dto.getAirCompany())
                 .numberOfFlights(dto.getNumberOfFlights())
-                .flight_distance(dto.getFlight_distance())
+                .flightDistance(dto.getFlightDistance())
                 .fuelCapacity(dto.getFuelCapacity())
                 .type(dto.getType())
                 .createdAt(dto.getCreatedAt())
@@ -36,7 +36,7 @@ public class AirplaneMapper implements RequestDtoMapper<AirplaneRequestDto, Airp
                 .factorySerialNumber(airplane.getFactorySerialNumber())
                 .airCompany(companyMapper.toResponseDto(airplane.getAirCompany()))
                 .numberOfFlights(airplane.getNumberOfFlights())
-                .flight_distance(airplane.getFlight_distance())
+                .flightDistance(airplane.getFlightDistance())
                 .fuelCapacity(airplane.getFuelCapacity())
                 .type(airplane.getType())
                 .createdAt(airplane.getCreatedAt())

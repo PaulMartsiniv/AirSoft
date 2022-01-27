@@ -16,10 +16,10 @@ import synergy.service.AirplaneService;
 @Service
 @AllArgsConstructor
 public class AirplaneServiceImpl implements AirplaneService {
-    SpecificationManager<Airplane> manager;
-    AirCompanyService airCompanyService;
-    AirCompanyDao airCompanyDao;
-    AirplaneDao airplaneDao;
+    private final SpecificationManager<Airplane> manager;
+    private final AirCompanyService airCompanyService;
+    private final AirCompanyDao airCompanyDao;
+    private final AirplaneDao airplaneDao;
 
     @Override
     public Airplane save(Airplane airplane) {
@@ -34,6 +34,18 @@ public class AirplaneServiceImpl implements AirplaneService {
     @Override
     public List<Airplane> findAll() {
         return airplaneDao.findAll();
+    }
+
+    @Override
+    public List<Airplane> findAll(Map<String, String> params) {
+        Specification<Airplane> specification = null;
+        for (Map.Entry<String, String> entry : params.entrySet()) {
+            Specification<Airplane> spec = manager.get(entry.getKey(),
+                    entry.getValue().split(","));
+            specification = specification == null
+                    ? Specification.where(spec) : specification.and(spec);
+        }
+        return airplaneDao.findAll(specification);
     }
 
     @Override
@@ -52,17 +64,5 @@ public class AirplaneServiceImpl implements AirplaneService {
         AirCompany airCompany = airCompanyDao.getById(airCompanyId);
         airplane.setAirCompany(airCompany);
         return save(airplane);
-    }
-
-    @Override
-    public List<Airplane> findAll(Map<String, String> params) {
-        Specification<Airplane> specification = null;
-        for (Map.Entry<String, String> entry : params.entrySet()) {
-            Specification<Airplane> spec = manager.get(entry.getKey(),
-                    entry.getValue().split(","));
-            specification = specification == null
-                    ? Specification.where(spec) : specification.and(spec);
-        }
-        return airplaneDao.findAll(specification);
     }
 }

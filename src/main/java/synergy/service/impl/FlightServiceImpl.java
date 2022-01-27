@@ -17,8 +17,8 @@ import synergy.util.TimeUtils;
 @Service
 @AllArgsConstructor
 public class FlightServiceImpl implements FlightService {
-    SpecificationManager<Flight> manager;
-    FlightDao dao;
+    private final SpecificationManager<Flight> manager;
+    private final FlightDao dao;
 
     @Override
     public Flight save(Flight flight) {
@@ -45,6 +45,18 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
+    public List<Flight> findAll(Map<String, String> params) {
+        Specification<Flight> specification = null;
+        for (Map.Entry<String, String> entry : params.entrySet()) {
+            Specification<Flight> spec = manager.get(entry.getKey(),
+                    entry.getValue().split(","));
+            specification = specification == null
+                    ? Specification.where(spec) : specification.and(spec);
+        }
+        return dao.findAll(specification);
+    }
+
+    @Override
     public void deleteById(Long id) {
         dao.deleteById(id);
     }
@@ -55,16 +67,16 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public List<Flight> findAllByAirCompany_NameAndFlightStatus(String airCompany_name,
+    public List<Flight> findAllByAirCompany_nameAndFlightStatus(String airCompanyName,
                                                                 String flightStatus) {
-        return dao.findAllByAirCompany_NameAndFlightStatus(airCompany_name,
+        return dao.findAllByAirCompanyNameAndFlightStatus(airCompanyName,
                 getFlightStatus(flightStatus));
     }
 
     @Override
     public List<Flight> findAllByFlightStatusAndStartedAtBefore() {
         return dao.findAllByFlightStatusAndStartedAtBefore(Flight.FlightStatus.ACTIVE,
-                LocalDateTime.now().minusHours(24));
+                LocalDateTime.now().minusDays(1).withNano(0));
     }
 
     @Override
@@ -73,20 +85,8 @@ public class FlightServiceImpl implements FlightService {
         TimeUtils timeUtils = new TimeUtils();
         LocalTime differences = timeUtils.getDifferences(flight.getStartedAt(), flight.getEndedAt(),
                 ZoneOffset.of("+02:00"));
-        return dao.findAllByFlightStatusEqualsAndEstimatedFlightTimeLessThan
-                (Flight.FlightStatus.COMPLETED, differences);
-    }
-
-    @Override
-    public List<Flight> findAll(Map<String, String> params) {
-        Specification<Flight> specification = null;
-        for (Map.Entry<String, String> entry : params.entrySet()) {
-            Specification<Flight> spec = manager.get(entry.getKey(),
-                    entry.getValue().split(","));
-            specification = specification == null
-                    ? Specification.where(spec) : specification.and(spec);
-        }
-        return dao.findAll(specification);
+        return dao.findAllByFlightStatusEqualsAndEstimatedFlightTimeLessThan(
+                Flight.FlightStatus.COMPLETED, differences);
     }
 
     @Override

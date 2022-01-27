@@ -21,7 +21,7 @@ public class AirplaneRequestDto {
     private String factorySerialNumber;
     private AirCompany airCompany;
     private int numberOfFlights;
-    private int flight_distance;
+    private int flightDistance;
     private int fuelCapacity;
     private Airplane.TypeOfAirlines type;
     private LocalDate createdAt;
