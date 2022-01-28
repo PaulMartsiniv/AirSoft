@@ -2,6 +2,7 @@ package synergy.service.impl;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -32,14 +33,9 @@ class FlightServiceImplTest {
                 .airCompany(AirCompany.builder()
                         .name("Ryanair")
                         .build())
-                .airplane(null)
                 .departureCountry("Ukraine")
                 .destinationCountry("USA")
                 .distance(9153)
-                .estimatedFlightTime(null)
-                .startedAt(null)
-                .endedAt(null)
-                .delayStartedAt(null)
                 .createdAt(LocalDate.now().minusYears(10))
                 .build();
     }
@@ -137,9 +133,30 @@ class FlightServiceImplTest {
 
     @Test
     void findAllByDifferences() {
+        flight.setFlightStatus(Flight.FlightStatus.COMPLETED);
+        flight.setStartedAt(LocalDateTime.of(2022,1,20,10,0));
+        flight.setEndedAt(LocalDateTime.of(2022,1,20,20,0));
+        flight.setEstimatedFlightTime(LocalTime.of(12,0));
+        Mockito.when(flightDao.findAllByFlightStatusEquals(Flight.FlightStatus
+                .COMPLETED)).thenReturn(List.of(flight));
+        List<Flight> actual = flightService.findAllByDifferences("c");
+        Assertions.assertEquals(1, actual.size());
+        Assertions.assertEquals("COMPLETED", actual.get(0).getFlightStatus().name());
     }
 
     @Test
     void updateFlightStatus() {
+        flight.setFlightStatus(Flight.FlightStatus.COMPLETED);
+        flight.setId(1L);
+        Mockito.when(flightDao.save(flight)).thenReturn(flight);
+        Mockito.when(flightDao.getById(1L)).thenReturn(flight);
+        Flight actual = flightService.updateFlightStatus(1L,"p");
+        Assertions.assertEquals("PENDING", actual.getFlightStatus().name());
+        actual = flightService.updateFlightStatus(1L,"a");
+        Assertions.assertEquals("ACTIVE", actual.getFlightStatus().name());
+        actual = flightService.updateFlightStatus(1L,"d");
+        Assertions.assertEquals("DELAYED", actual.getFlightStatus().name());
+        actual = flightService.updateFlightStatus(1L,"c");
+        Assertions.assertEquals("COMPLETED", actual.getFlightStatus().name());
     }
 }

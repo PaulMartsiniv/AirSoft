@@ -87,9 +87,9 @@ class FlightDaoDaoTest {
     }
 
     @Test
-    void findAllByFlightStatusEquals_pending_AndEstimatedFlightTimeLessThan_1hour_ok() {
-        List<Flight> actual = flightDao.findAllByFlightStatusEqualsAndEstimatedFlightTimeLessThan(
-                Flight.FlightStatus.PENDING, LocalTime.of(11,0));
+    void findAllByFlightStatusEquals_pending_ok() {
+        List<Flight> actual = flightDao.findAllByFlightStatusEquals(
+                Flight.FlightStatus.PENDING);
         Assertions.assertEquals(3, actual.size());
         Assertions.assertTrue(LocalDateTime.now().minusHours(8)
                 .isAfter(actual.get(0).getStartedAt()));
@@ -101,9 +101,9 @@ class FlightDaoDaoTest {
     }
 
     @Test
-    void findAllByFlightStatusEquals_pending_AndEstimatedFlightTimeLessThan_9hour_notOk() {
-        List<Flight> actual = flightDao.findAllByFlightStatusEqualsAndEstimatedFlightTimeLessThan(
-                Flight.FlightStatus.PENDING, LocalTime.of(9,59));
+    void findAllByFlightStatusEquals_active_notOk() {
+        List<Flight> actual = flightDao.findAllByFlightStatusEquals(
+                Flight.FlightStatus.ACTIVE);
         Assertions.assertEquals(List.of(), actual);
     }
 }

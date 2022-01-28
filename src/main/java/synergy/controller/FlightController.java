@@ -75,12 +75,12 @@ public class FlightController {
                 .collect(Collectors.toList());
     }
 
-    @GetMapping(value = "/flightId")
+    @GetMapping(value = "/differences")
     public List<FlightResponseDto> findAllByFlightStatusEqualsAndEstimatedFlightTimeLessThan(
-            @RequestParam("id") Long id) {
+            @RequestParam("status") String status) {
         logger.info("findAllByFlightStatusEqualsAndEstimatedFlightTimeLessThan method "
-                + "in class FlightController was called. Params: id = {}", id);
-        return flightService.findAllByDifferences(id).stream()
+                + "in class FlightController was called. Params: status = {}", status);
+        return flightService.findAllByDifferences(status).stream()
                 .map(flightMapper::toResponseDto)
                 .collect(Collectors.toList());
     }

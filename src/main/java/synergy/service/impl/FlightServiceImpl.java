@@ -1,10 +1,10 @@
 package synergy.service.impl;
 
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.ZoneOffset;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -80,13 +80,14 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public List<Flight> findAllByDifferences(Long id) {
-        Flight flight = getById(id);
+    public List<Flight> findAllByDifferences(String status) {
         TimeUtils timeUtils = new TimeUtils();
-        LocalTime differences = timeUtils.getDifferences(flight.getStartedAt(), flight.getEndedAt(),
-                ZoneOffset.of("+02:00"));
-        return dao.findAllByFlightStatusEqualsAndEstimatedFlightTimeLessThan(
-                Flight.FlightStatus.COMPLETED, differences);
+        return dao.findAllByFlightStatusEquals(
+                        getFlightStatus(status)).stream()
+                .filter(e -> timeUtils.getDifferences(e.getStartedAt(),
+                                e.getEndedAt(), ZoneOffset.of("+02:00"))
+                        .isAfter(e.getEstimatedFlightTime()))
+                .collect(Collectors.toList());
     }
 
     @Override

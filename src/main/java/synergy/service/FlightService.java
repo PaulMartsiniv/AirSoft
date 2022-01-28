@@ -10,7 +10,7 @@ public interface FlightService extends GenericService<Flight> {
 
     List<Flight> findAllByFlightStatusAndStartedAtBefore();
 
-    List<Flight> findAllByDifferences(Long id);
+    List<Flight> findAllByDifferences(String status);
 
     List<Flight> findAll(Map<String, String> params);
 
