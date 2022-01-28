@@ -33,14 +33,9 @@ class FlightServiceImplTest {
                 .airCompany(AirCompany.builder()
                         .name("Ryanair")
                         .build())
-                .airplane(null)
                 .departureCountry("Ukraine")
                 .destinationCountry("USA")
                 .distance(9153)
-                .estimatedFlightTime(null)
-                .startedAt(null)
-                .endedAt(null)
-                .delayStartedAt(null)
                 .createdAt(LocalDate.now().minusYears(10))
                 .build();
     }
