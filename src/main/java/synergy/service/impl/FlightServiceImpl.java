@@ -17,6 +17,7 @@ import synergy.util.TimeUtils;
 @Service
 @AllArgsConstructor
 public class FlightServiceImpl implements FlightService {
+    private static final ZoneOffset ZONE_OFFSET_UKRAINE = ZoneOffset.of("+02:00");
     private final SpecificationManager<Flight> manager;
     private final FlightDao dao;
 
@@ -85,7 +86,7 @@ public class FlightServiceImpl implements FlightService {
         return dao.findAllByFlightStatusEquals(
                         getFlightStatus(status)).stream()
                 .filter(e -> timeUtils.getDifferences(e.getStartedAt(),
-                                e.getEndedAt(), ZoneOffset.of("+02:00"))
+                                e.getEndedAt(), ZONE_OFFSET_UKRAINE)
                         .isAfter(e.getEstimatedFlightTime()))
                 .collect(Collectors.toList());
     }

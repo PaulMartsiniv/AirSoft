@@ -1,4 +1,4 @@
-package synergy.dto.mapper;
+package synergy.service.mapper;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;

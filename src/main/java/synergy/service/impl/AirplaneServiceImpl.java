@@ -10,14 +10,12 @@ import synergy.dao.AirplaneDao;
 import synergy.dao.spec.SpecificationManager;
 import synergy.entity.AirCompany;
 import synergy.entity.Airplane;
-import synergy.service.AirCompanyService;
 import synergy.service.AirplaneService;
 
 @Service
 @AllArgsConstructor
 public class AirplaneServiceImpl implements AirplaneService {
     private final SpecificationManager<Airplane> manager;
-    private final AirCompanyService airCompanyService;
     private final AirCompanyDao airCompanyDao;
     private final AirplaneDao airplaneDao;
 

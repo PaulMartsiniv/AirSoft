@@ -14,7 +14,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
-import synergy.dto.mapper.FlightMapper;
+import synergy.service.mapper.FlightMapper;
 import synergy.dto.response.AirCompanyResponseDto;
 import synergy.dto.response.AirplaneResponseDto;
 import synergy.dto.response.FlightResponseDto;
@@ -48,7 +48,7 @@ class FlightControllerTest {
                         .id(1L)
                         .name("das")
                         .build())
-                .airplane(List.of(Airplane.builder()
+                .airplanes(List.of(Airplane.builder()
                         .id(1L)
                         .name("asd")
                         .build()))
@@ -62,7 +62,7 @@ class FlightControllerTest {
                         .id(1L)
                         .name("das")
                         .build())
-                .airplane(List.of(Airplane.builder()
+                .airplanes(List.of(Airplane.builder()
                         .id(1L)
                         .name("asd")
                         .build()))
@@ -76,7 +76,7 @@ class FlightControllerTest {
                         .id(1L)
                         .name("das")
                         .build())
-                .airplane(List.of(Airplane.builder()
+                .airplanes(List.of(Airplane.builder()
                         .id(1L)
                         .name("asd")
                         .build()))
@@ -142,7 +142,6 @@ class FlightControllerTest {
     void getById() {
 
     }
-
 
     @Test
     void deleteById() {

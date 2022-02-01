@@ -10,13 +10,12 @@ import java.time.format.DateTimeFormatter;
 public class TimeUtils {
     public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter
             .ofPattern("yyyy-MM-dd HH:mm:ss");
-    public static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter
-            .ofPattern("HH:mm:ss");
+    public static final ZoneOffset ZONE_OFFSET_UKRAINE = ZoneOffset.of("+02:00");
 
     public LocalTime getDifferences(LocalDateTime from,
                                     LocalDateTime to, ZoneOffset offset) {
         if (offset == null) {
-            offset = ZoneOffset.of("+02:00");
+            offset = ZONE_OFFSET_UKRAINE;
         }
         long epochSecond = to.toEpochSecond(offset) - from.toEpochSecond(offset);
         return Instant.ofEpochSecond(epochSecond)

@@ -1,4 +1,4 @@
-package synergy.dto.mapper;
+package synergy.service.mapper;
 
 import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
@@ -21,7 +21,7 @@ public class FlightMapper implements RequestDtoMapper<FlightRequestDto, Flight>,
         return Flight.builder()
                 .flightStatus(dto.getFlightStatus())
                 .airCompany(dto.getAirCompany())
-                .airplane(dto.getAirplane())
+                .airplanes(dto.getAirplane())
                 .departureCountry(dto.getDepartureCountry())
                 .destinationCountry(dto.getDestinationCountry())
                 .distance(dto.getDistance())
@@ -38,7 +38,7 @@ public class FlightMapper implements RequestDtoMapper<FlightRequestDto, Flight>,
                 .id(flight.getId())
                 .flightStatus(flight.getFlightStatus())
                 .airCompany(companyMapper.toResponseDto(flight.getAirCompany()))
-                .airplane(flight.getAirplane().stream()
+                .airplane(flight.getAirplanes().stream()
                         .map(airplaneMapper::toResponseDto)
                         .collect(Collectors.toList()))
                 .departureCountry(flight.getDepartureCountry())

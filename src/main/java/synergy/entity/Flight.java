@@ -44,11 +44,11 @@ public class Flight {
     @ToString.Exclude
     private AirCompany airCompany;
     @ManyToMany
-    @JoinTable(name = "airplane_flight",
+    @JoinTable(name = "airplanes_flights",
             joinColumns = @JoinColumn(name = "flight_id"),
             inverseJoinColumns = @JoinColumn(name = "airplane_id"))
     @ToString.Exclude
-    private List<Airplane> airplane;
+    private List<Airplane> airplanes;
     @Column(name = "departure_country")
     private String departureCountry;
     @Column(name = "destination_country")
