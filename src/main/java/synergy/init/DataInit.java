@@ -61,7 +61,7 @@ public class DataInit implements ApplicationRunner {
         return Flight.builder()
                 .flightStatus(Flight.FlightStatus.PENDING)
                 .airCompany(airCompany)
-                .airplane(List.of(airplane))
+                .airplanes(List.of(airplane))
                 .departureCountry("Ukraine")
                 .destinationCountry("USA")
                 .distance(9153)
