@@ -3,8 +3,6 @@ package synergy.service.mapper;
 import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
-import synergy.dto.RequestDtoMapper;
-import synergy.dto.ResponseDtoMapper;
 import synergy.dto.request.FlightRequestDto;
 import synergy.dto.response.FlightResponseDto;
 import synergy.entity.Flight;

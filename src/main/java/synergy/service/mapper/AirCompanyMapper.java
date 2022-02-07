@@ -1,8 +1,6 @@
 package synergy.service.mapper;
 
 import org.springframework.stereotype.Component;
-import synergy.dto.RequestDtoMapper;
-import synergy.dto.ResponseDtoMapper;
 import synergy.dto.request.AirCompanyRequestDto;
 import synergy.dto.response.AirCompanyResponseDto;
 import synergy.entity.AirCompany;
