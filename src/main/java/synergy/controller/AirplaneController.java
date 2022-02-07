@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import synergy.dto.mapper.AirplaneMapper;
 import synergy.dto.request.AirplaneRequestDto;
 import synergy.dto.response.AirplaneResponseDto;
 import synergy.service.AirplaneService;
+import synergy.service.mapper.AirplaneMapper;
 
 @RestController
 @AllArgsConstructor

@@ -1,9 +1,7 @@
-package synergy.dto.mapper;
+package synergy.service.mapper;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
-import synergy.dto.RequestDtoMapper;
-import synergy.dto.ResponseDtoMapper;
 import synergy.dto.request.AirplaneRequestDto;
 import synergy.dto.response.AirplaneResponseDto;
 import synergy.entity.Airplane;

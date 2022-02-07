@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import synergy.dto.mapper.AirCompanyMapper;
 import synergy.dto.request.AirCompanyRequestDto;
 import synergy.dto.response.AirCompanyResponseDto;
 import synergy.service.AirCompanyService;
+import synergy.service.mapper.AirCompanyMapper;
 
 @RestController
 @AllArgsConstructor
